@@ -26,11 +26,3 @@ jobs:
         python3 ozipdecrypt.py M6763A_11_OTA_0450_all_T6tah4NhiqWo.ozip
     - name: Upload Decrypted ZIP
       run: curl -T M6763A_11_OTA_0450_all_T6tah4NhiqWo.zip https://bashupload.com/
-    
-  migrate-to-node16:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '16.x'
-      - run: echo "Node.js version: $(node -v)"  
