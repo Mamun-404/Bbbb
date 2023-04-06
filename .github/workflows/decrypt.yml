@@ -10,19 +10,20 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-    - name: Download OZIP
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y aria2
-        aria2c https://assorted.downloads.oppo.com/firmware/CPH1723/M6763A_11_OTA_0450_all_T6tah4NhiqWo.ozip
-    - name: Decrypt OZIP
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y python3-pip zip
-        sudo pip3 install setuptools wheel docopt pycryptodome
-        wget https://raw.githubusercontent.com/techyminati/oppo_ozip_decrypt/master/ozipdecrypt.py
-        python3 ozipdecrypt.py M6763A_11_OTA_0450_all_T6tah4NhiqWo.ozip
-    - name: Upload Decrypted ZIP
-      run: curl -T M6763A_11_OTA_0450_all_T6tah4NhiqWo.zip https://bashupload.com/
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          node-version: '16.x'
+      - name: Download OZIP
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y aria2
+          aria2c https://assorted.downloads.oppo.com/firmware/CPH1723/M6763A_11_OTA_0450_all_T6tah4NhiqWo.ozip
+      - name: Decrypt OZIP
+        run: |
+          sudo apt-get install -y python-pip zip
+          sudo pip install setuptools wheel docopt pycryptodome
+          wget https://raw.githubusercontent.com/techyminati/oppo_ozip_decrypt/master/ozipdecrypt.py
+          python ozipdecrypt.py CPH1723EX_11_A.45_200903.ozip
+      - name: Upload Decrypted ZIP
+        run: curl -T CPH1723EX_11_A.45_200903.zip https://bashupload.com/
