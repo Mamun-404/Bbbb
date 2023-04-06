@@ -18,7 +18,7 @@ jobs:
 
       - name: Decrypt OZIP to ZIP
         run: |
-          oppo_decrypt -i <firmware_url> -o firmware.zip
+          oppo_decrypt -i https://assorted.downloads.oppo.com/firmware/CPH1723/M6763A_11_OTA_0450_all_T6tah4NhiqWo.ozip -o firmware.zip
 
       - name: Upload firmware.zip to bashupload.com
         run: |
