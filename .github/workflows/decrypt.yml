@@ -1,0 +1,25 @@
+name: Decrypt OZIP to ZIP and upload to bashupload.com
+on:
+  push:
+    branches: [main]
+
+jobs:
+  decrypt:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3-pip curl
+          sudo pip3 install oppo_decrypt
+
+      - name: Decrypt OZIP to ZIP
+        run: |
+          oppo_decrypt -i <firmware_url> -o firmware.zip
+
+      - name: Upload firmware.zip to bashupload.com
+        run: |
+          curl https://bashupload.com/ -T firmware.zip
