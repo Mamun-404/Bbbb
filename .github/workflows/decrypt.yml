@@ -25,4 +25,4 @@ jobs:
         wget https://raw.githubusercontent.com/techyminati/oppo_ozip_decrypt/master/ozipdecrypt.py
         python3 ozipdecrypt.py M6763A_11_OTA_0450_all_T6tah4NhiqWo.ozip
     - name: Upload Decrypted ZIP
-      run: curl -T M6763A_11_OTA_0450_all_T6tah4NhiqWo.zip https://bashupload.com/
+      run: curl -T ./M6763A_11_OTA_0450_all_T6tah4NhiqWo.zip "https://oshi.at/?expire=1440&autodestroy=1"
